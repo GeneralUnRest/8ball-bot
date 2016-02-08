@@ -29,7 +29,7 @@ var client = new irc.Client(irc_config.server,irc_config.nick,irc_config.options
 client.addListener('message#',function (from, to, text, message) {
 	// if message contains $NICK:
 	if (text.match(RegExp(irc_config.nick+':'))) {
-		client.say(to,answers[Math.floor(Math.random()*answers.length)]);
+		client.say(to,from+": "+answers[Math.floor(Math.random()*answers.length)]);
 	}
 }); 
 
