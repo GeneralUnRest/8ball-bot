@@ -22,7 +22,7 @@ var client = new irc.Client(irc_config.server,irc_config.nick,irc_config.options
 // begin listening for messages
 // it only listens for channel messages
 // private messages will be ignored
-client.addListener('message#',function (from, to, text, message) {
+client.addListener('message',function (from, to, text, message) {
 	// if message contains ${NICK}: or ${NICK},
 	if (text.match(RegExp(irc_config.nick+'(:|,)'))) {
 		client.say(to,from+": "+answers[Math.floor(Math.random()*answers.length)]);
@@ -43,7 +43,7 @@ if (irc_config.telegram_token !== '') {
 
 	var telebot = new telegramBot(irc_config.telegram_token, { polling: true });
 
-	telebot.onText(/8ball (.*)/, function (msg, match) {
+	telebot.onText(/.*/, function (msg, match) {
 		
 		var from = msg.chat.id;
 		telebot.sendMessage(from, answers[Math.floor(Math.random()*answers.length)]);
