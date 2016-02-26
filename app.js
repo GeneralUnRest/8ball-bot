@@ -22,12 +22,18 @@ var client = new irc.Client(irc_config.server,irc_config.nick,irc_config.options
 // begin listening for messages
 // it only listens for channel messages
 // private messages will be ignored
-client.addListener('message',function (from, to, text, message) {
+client.addListener('message#',function (from, to, text, message) {
 	// if message contains ${NICK}: or ${NICK},
 	if (text.match(RegExp(irc_config.nick+'(:|,)'))) {
 		client.say(to,from+": "+answers[Math.floor(Math.random()*answers.length)]);
 	}
 }); 
+
+// added pm for no real reason
+// only because the telegram bot also has such feature.
+client.addListener('pm', function (from, message) {
+	client.say(from,from+": "+answers[Math.floor(Math.random()*answers.length)]);
+});
 
 // listen for invites
 // /invite $NICK will cause the bot to join that channel
