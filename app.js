@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+//#!/usr/bin/env node
 //   Copyright 2016 prussian <generalunrest@airmail.cc>
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,3 +35,17 @@ client.addListener('invite',function(channel, from, message) {
 	client.join(channel);
 });
 
+// optional telegram bot
+if (irc_config.telegram_token !== '') {
+
+	// for telegram bots
+	var telegramBot = require('node-telegram-bot-api');
+
+	var telebot = new telegramBot(irc_config.telegram_token, { polling: true });
+
+	telebot.onText(/^8ball/, function (msg, match) {
+		
+		var from = msg.from.id;
+		bot.sendMessage(from+', '+answers[Math.floor(Math.random()*answers.length)]);
+	});
+}
