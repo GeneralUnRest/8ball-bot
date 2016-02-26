@@ -43,9 +43,9 @@ if (irc_config.telegram_token !== '') {
 
 	var telebot = new telegramBot(irc_config.telegram_token, { polling: true });
 
-	telebot.onText(/^8ball/, function (msg, match) {
+	telebot.onText(/8ball (.*)/, function (msg, match) {
 		
 		var from = msg.from.id;
-		bot.sendMessage(from+', '+answers[Math.floor(Math.random()*answers.length)]);
+		telebot.sendMessage(from+', '+answers[Math.floor(Math.random()*answers.length)]);
 	});
 }
