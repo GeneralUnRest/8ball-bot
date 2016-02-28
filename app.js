@@ -24,7 +24,7 @@ var client = new irc.Client(irc_config.server,irc_config.nick,irc_config.options
 // private messages will be ignored
 client.addListener('message#',function (from, to, text, message) {
 	// if message contains ${NICK}: or ${NICK},
-	if (text.match(RegExp(irc_config.nick+'(:|,)'))) {
+	if (text.match(RegExp(irc_config.nick))) {
 		client.say(to,from+": "+answers[Math.floor(Math.random()*answers.length)]);
 	}
 }); 
