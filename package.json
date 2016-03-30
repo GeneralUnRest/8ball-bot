@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/GeneralUnRest/8ball-bot#readme",
   "dependencies": {
-    "irc": "^0.4.1",
+    "irc": "^0.5.0",
     "node-telegram-bot-api": "^0.20.1"
   }
 }
