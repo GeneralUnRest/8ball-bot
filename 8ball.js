@@ -25,7 +25,7 @@ var client = new irc.Client(irc_config.server,irc_config.nick,irc_config.options
 client.addListener('message#',function (from, to, text) {
 
 	// answer bots query
-	if (/^\.bots/.test(text) || /^!bots/.test(text)) {
+	if (/^[.!]bots/.test(text)) {
 		client.say(to, "8ball-bot [NodeJS], highlight me and ask your yes or no questions!")
 		return
 	}

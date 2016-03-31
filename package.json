@@ -2,7 +2,7 @@
   "name": "8ball-bot",
   "version": "0.0.1",
   "description": "8ball irc bot",
-  "main": "app.js",
+  "main": "8ball.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
